@@ -5,3 +5,21 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+10.times do
+    pizzas = Pizza.create(name:Faker::Food.dish,ingredients:Faker::Food.ingredient)
+    restaurants = Restaurant.create(name:Faker::Restaurant.name,address:Faker::Address.street_address)
+end
+    
+
+pizzas = Pizza.all
+restaurants = Restaurant.all
+
+
+10.times do
+    restaurant = restaurants.sample
+    pizza = pizzas.sample
+    price = Faker::Number.between(from: 1, to: 30)
+  
+    RestaurantPizza.create(price: price,restaurant: restaurant,pizza: pizza)
+end
